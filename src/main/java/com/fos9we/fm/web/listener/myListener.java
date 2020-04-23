@@ -1,8 +1,11 @@
 package com.fos9we.fm.web.listener;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
+
+import com.fos9we.fm.service.IProductService;
 
 /**
  *@ClassName: myListener
@@ -12,9 +15,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class myListener implements ApplicationListener<ApplicationReadyEvent>{
-
+	@Autowired
+	private IProductService productService;
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent event) {
-//		System.out.println("Spring监听事件启动");
+//		productService.findAllProduct();//在项目启动的时候将商品的信息查询查来，但是还不知道如何交给前端
 	}
 }
