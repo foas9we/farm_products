@@ -33,4 +33,10 @@ public class UserController {
    public User findById(long id) {
 	   return userService.findUserById(id);
    }
+   
+   @ApiOperation(value = "对用户信息进行更新或者保存")
+   @GetMapping("saveOrUpdate")
+   public void SaveOrUpdateUser(User user) {
+	   userService.SaveOrUpdateUser(user);
+   }
 }

@@ -10,5 +10,8 @@ import com.fos9we.fm.bean.User;
  *@date 2020年4月17日 上午11:38:18
  */
 public interface IUserService {
+	
 	User findUserById(long id );
+	
+	public void SaveOrUpdateUser(User user);
 }

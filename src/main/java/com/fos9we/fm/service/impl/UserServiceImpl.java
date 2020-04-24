@@ -25,6 +25,20 @@ public class UserServiceImpl implements IUserService{
 	public User findUserById(long id) {
 		return userMapper.selectByPrimaryKey(id);
 	}
+
+	
+	@Override
+	public void SaveOrUpdateUser(User user) {
+		//当没有没传入id对用户信息进行插入
+		//当传入信息有id是对用户信息进行更新
+		if(user.getId()!=null) {
+			userMapper.updateByPrimaryKeySelective(user);
+		}else {
+			userMapper.insertSelective(user);
+		}
+	}
+	
+	
 	
 	
 }
