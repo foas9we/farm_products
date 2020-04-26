@@ -1,6 +1,7 @@
 package com.fos9we.fm.service;
 
 import com.fos9we.fm.bean.User;
+import com.fos9we.fm.utils.CustomerException;
 
 /**
  * 
@@ -13,5 +14,5 @@ public interface IUserService {
 	
 	User findUserById(long id );
 	
-	public void SaveOrUpdateUser(User user);
+	public void SaveOrUpdateUser(User user)throws CustomerException;
 }

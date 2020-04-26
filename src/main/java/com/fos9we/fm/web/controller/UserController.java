@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fos9we.fm.bean.User;
 import com.fos9we.fm.service.IUserService;
+import com.fos9we.fm.utils.Message;
+import com.fos9we.fm.utils.MessageUtil;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -30,13 +32,16 @@ public class UserController {
    
    @ApiOperation(value = "获取用户的基本信息")
    @GetMapping("findById")
-   public User findById(long id) {
-	   return userService.findUserById(id);
+   public Message findById(long id) {
+		User findUserById = userService.findUserById(id);
+		return MessageUtil.success(findUserById);
+				
    }
    
    @ApiOperation(value = "对用户信息进行更新或者保存")
    @GetMapping("saveOrUpdate")
-   public void SaveOrUpdateUser(User user) {
+   public Message SaveOrUpdateUser(User user) {
 	   userService.SaveOrUpdateUser(user);
+	   return MessageUtil.success("更新成功");
    }
 }
