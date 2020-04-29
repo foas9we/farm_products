@@ -49,4 +49,9 @@ public class RoleController {
 		List<RoleExtend> findAll = roleService.findAllRoleWithPrivilege();
 		return MessageUtil.success(findAll);
 	}
+	
+	public Message deleteRoleById(long id) {
+		roleService.deleteRoleById(id);
+		return MessageUtil.success("删除成功");
+	}
 } 

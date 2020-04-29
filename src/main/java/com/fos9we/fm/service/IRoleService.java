@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fos9we.fm.bean.Role;
 import com.fos9we.fm.bean.extend.RoleExtend;
+import com.fos9we.fm.utils.CustomerException;
 
 /**
  *@ClassName: IRoleService
@@ -36,4 +37,15 @@ public interface IRoleService {
 	 *
 	 */
 	List<RoleExtend> findAllRoleWithPrivilege();
+	
+	/**
+	 * 
+	 * @Title: deleteRoleById 
+	 * @Description: 通过角色id删除角色信息
+	 * @param @param id    
+	 * @return void    
+	 * @throws
+	 *
+	 */
+	void deleteRoleById(long id)throws CustomerException;
 }

@@ -13,6 +13,7 @@ import com.fos9we.fm.dao.RoleMapper;
 import com.fos9we.fm.dao.extend.ProductExtendMapper;
 import com.fos9we.fm.dao.extend.RoleExtendMapper;
 import com.fos9we.fm.service.IRoleService;
+import com.fos9we.fm.utils.CustomerException;
 
 /**
  *@ClassName: RoleServiceImpl
@@ -39,6 +40,15 @@ public class RoleServiceImpl implements IRoleService{
 	@Override
 	public List<RoleExtend> findAllRoleWithPrivilege() {
 		return roleExtendMapper.findAllRoleWithPrivilege();
+	}
+
+	@Override
+	public void deleteRoleById(long id) throws CustomerException {
+		Role role = roleMapper.selectByPrimaryKey(id);
+		if(role==null) {
+			throw new CustomerException("该角色不存在");
+		}
+		roleMapper.deleteByPrimaryKey(id);
 	}
 
 }
