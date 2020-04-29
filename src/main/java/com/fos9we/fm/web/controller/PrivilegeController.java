@@ -1,0 +1,52 @@
+package com.fos9we.fm.web.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fos9we.fm.bean.Privilege;
+import com.fos9we.fm.service.IPrivilegeService;
+import com.fos9we.fm.utils.Message;
+import com.fos9we.fm.utils.MessageUtil;
+
+import io.swagger.annotations.ApiOperation;
+
+/**
+ *@ClassName: PrivilegeController
+ *@Description: TODO
+ * @author Administrator
+ *@date 2020年4月29日 下午8:11:44 
+ */
+@Validated
+@RestController
+@RequestMapping("/privilege")
+public class PrivilegeController {
+	@Autowired
+	IPrivilegeService privilegeService;
+	
+	@ApiOperation(value="查找所有权限信息")
+	@GetMapping("findAll")
+	public Message findAll() {
+		List<Privilege> findAll = privilegeService.findAll();
+		return MessageUtil.success(findAll);
+	}
+	
+	@ApiOperation(value="通过parentId查找权限信息")
+	@GetMapping("findByParentId")
+	public Message findByParentId(long id) {
+		List<Privilege> findByParentId = privilegeService.findByParentId(id);
+		return MessageUtil.success(findByParentId);
+	}
+	
+	@ApiOperation(value="保存或更新权限信息")
+	@PostMapping("saveOrUpdate")
+	public Message saveOrUpdate(Privilege privilege) {
+		privilegeService.saveOrUpdate(privilege);
+		return MessageUtil.success("更新成功");
+	}
+}
