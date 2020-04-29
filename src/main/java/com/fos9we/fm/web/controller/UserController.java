@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Validated
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/vue-element-admin/user")
 public class UserController {
    @Autowired
    private IUserService userService;
@@ -70,7 +70,7 @@ public class UserController {
 	   //// 1. 通过token获取用户信息  {id,use,gender,roles:[]}
 	   UserExtend findUserExtendById = userService.findUserExtendById(1L);
 	   return MessageUtil.success(findUserExtendById);
-   }
+   } 
    @ApiOperation(value = "用户退出登录")
    @PostMapping("logout")
    public Message logout() {

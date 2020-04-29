@@ -47,19 +47,19 @@
 
 
 	<!-- 映射配置 -->
-    <table tableName="fm_category" domainObjectName="Category" ></table>
+    <!-- <table tableName="fm_category" domainObjectName="Category" ></table>
     <table tableName="fm_evaluate" domainObjectName="Evaluate" ></table>
     <table tableName="fm_logs" domainObjectName="Logs" >
-      <!-- <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <columnOverride column="source" javaType="java.lang.String" jdbcType="VARCHAR" /> -->
+      <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <columnOverride column="source" javaType="java.lang.String" jdbcType="VARCHAR" />
     </table>
     <table tableName="fm_order" domainObjectName="Order" ></table>
     <table tableName="fm_privilege" domainObjectName="Privilege" ></table>
     <table tableName="fm_product" domainObjectName="Product" ></table>
     <table tableName="fm_role" domainObjectName="Role" ></table>
-    <table tableName="fm_role_privilege" domainObjectName="RolePrivilege" ></table>
+    <table tableName="fm_role_privilege" domainObjectName="RolePrivilege" ></table> -->
     <table tableName="fm_user" domainObjectName="User" ></table>
-    <table tableName="fm_user_role" domainObjectName="UserRole" ></table>
+    <!-- <table tableName="fm_user_role" domainObjectName="UserRole" ></table> -->
 	<!--
 	 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 	-->
