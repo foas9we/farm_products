@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fos9we.fm.bean.Category;
 import com.fos9we.fm.bean.CategoryExample;
@@ -47,6 +48,7 @@ public class CategoryServiceImpl implements ICategoryService{
 	}
 
 	@Override
+	@Transactional
 	public void deleteById(long id) throws CustomerException {
 		Category category = categoryMapper.selectByPrimaryKey(id);
 		if(category==null) {
@@ -56,6 +58,7 @@ public class CategoryServiceImpl implements ICategoryService{
 	}
 
 	@Override
+	@Transactional
 	public void batchDelete(long[] ids) throws CustomerException {
 		for(long id:ids) {
 			this.deleteById(id);

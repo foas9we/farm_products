@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.fos9we.fm.bean.User;
 import com.fos9we.fm.bean.UserExample;
+import com.fos9we.fm.bean.extend.UserExtend;
 import com.fos9we.fm.dao.UserMapper;
+import com.fos9we.fm.dao.extend.UserExtendMapper;
 import com.fos9we.fm.service.IUserService;
 
 /**
@@ -20,6 +22,8 @@ import com.fos9we.fm.service.IUserService;
 public class UserServiceImpl implements IUserService{
 	@Resource
     private UserMapper userMapper;
+	@Resource
+    private UserExtendMapper userExtendMapper;
 
 	@Override
 	public User findUserById(long id) {
@@ -36,6 +40,12 @@ public class UserServiceImpl implements IUserService{
 		}else {
 			userMapper.insertSelective(user);
 		}
+	}
+
+
+	@Override
+	public UserExtend findUserExtendById(long id) {
+		return userExtendMapper.findUserExtendById(id);
 	}
 	
 	

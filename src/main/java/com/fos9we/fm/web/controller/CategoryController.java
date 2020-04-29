@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +15,7 @@ import com.fos9we.fm.service.ICategoryService;
 import com.fos9we.fm.utils.Message;
 import com.fos9we.fm.utils.MessageUtil;
 
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
 
@@ -37,13 +40,13 @@ public class CategoryController {
 	}
 	
 	@ApiOperation(value="添加或者修改栏目")
-	@GetMapping("saveOrUpdate")
+	@PostMapping("saveOrUpdate")
 	public Message saveOrUpdate(Category category) {
 		categoryService.saveOrUpdate(category);
 		return MessageUtil.success("更新成功");
-	}
+	} 
 	
-	@ApiOperation(value="通过id删除栏目")
+	@ApiOperation(value="通过id删除栏目") 
 	@GetMapping("deleteById")
 	public Message deleteById(long id) {
 		categoryService.deleteById(id);
@@ -51,9 +54,9 @@ public class CategoryController {
 	}
 	
 	@ApiOperation(value="批量删除栏目")
-	@GetMapping("batchDelete")
-	public Message batchDelete(long[] ids) {
+	@PostMapping("batchDelete")
+	public Message batchDelete(@RequestBody long[] ids) {
 		categoryService.batchDelete(ids);
-		return MessageUtil.success("批量删除成功");
+		return MessageUtil.success("批量删除成功"); 
 	}
 }
