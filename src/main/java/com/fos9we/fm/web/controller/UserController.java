@@ -4,6 +4,7 @@
 package com.fos9we.fm.web.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.fos9we.fm.bean.extend.UserExtend;
 import com.fos9we.fm.service.IUserService;
 import com.fos9we.fm.utils.Message;
 import com.fos9we.fm.utils.MessageUtil;
+import com.fos9we.fm.vm.UserRoleVM;
 import com.fos9we.fm.vm.UserVM;
 
 import io.swagger.annotations.ApiOperation;
@@ -51,6 +53,36 @@ public class UserController {
    public Message SaveOrUpdateUser(User user) {
 	   userService.SaveOrUpdateUser(user);
 	   return MessageUtil.success("更新成功");
+   }
+   
+   
+   @ApiOperation(value = "查询所有用户的基本信息")
+   @GetMapping("findAll")
+   public Message findAll() {
+	   List<User> findAll = userService.findAll();
+	   return MessageUtil.success(findAll);
+   }
+   
+   
+   @ApiOperation(value = "查询所有用户的基本信息(含角色信息)")
+   @GetMapping("findAllWithRole")
+   public Message findAllWithRole() {
+	   List<UserExtend> findAllWithRole = userService.findAllWithRole();
+	   return MessageUtil.success(findAllWithRole);
+   }
+   
+   @ApiOperation(value = "通过id删除用户基本信息")
+   @GetMapping("deleteById")
+   public Message deleteById(long id) {
+	   userService.deleteById(id);
+	   return MessageUtil.success("删除成功");
+   }
+   
+   @ApiOperation(value = "配置角色")
+   @GetMapping("setRoles")
+   public Message setRoles(UserRoleVM userRoleVM) {
+	   userService.setRoles(userRoleVM.getId(), userRoleVM.getRoles());
+	   return MessageUtil.success("设置成功");
    }
    
 //=================================用户登录验证相关功能========================================
