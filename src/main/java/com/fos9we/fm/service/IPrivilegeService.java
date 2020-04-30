@@ -3,6 +3,7 @@ package com.fos9we.fm.service;
 import java.util.List;
 
 import com.fos9we.fm.bean.Privilege;
+import com.fos9we.fm.bean.extend.PrivilegeExtend;
 import com.fos9we.fm.utils.CustomerException;
 
 /**
@@ -44,4 +45,15 @@ public interface IPrivilegeService {
 	 *
 	 */
 	void saveOrUpdate(Privilege privilege)throws CustomerException;
+	
+	/**
+	 * 
+	 * @Title: findALlWithChildren 
+	 * @Description: 查询权限时级联查询子权限
+	 * @param @return    
+	 * @return List<PrivilegeExtend>    
+	 * @throws
+	 *
+	 */
+	List<PrivilegeExtend> findALlWithChildren();
 }

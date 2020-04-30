@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.fos9we.fm.bean.Privilege;
 import com.fos9we.fm.bean.PrivilegeExample;
+import com.fos9we.fm.bean.extend.PrivilegeExtend;
 import com.fos9we.fm.dao.PrivilegeMapper;
+import com.fos9we.fm.dao.extend.PrivilegeExtendMapper;
 import com.fos9we.fm.service.IPrivilegeService;
 import com.fos9we.fm.utils.CustomerException;
 
@@ -22,6 +24,8 @@ import com.fos9we.fm.utils.CustomerException;
 public class PrivilegeServiceImpl implements IPrivilegeService{
 	@Resource
 	PrivilegeMapper privilegeMapper;
+	@Resource
+	PrivilegeExtendMapper privilegeExtendMapper;
 	
 	@Override
 	public List<Privilege> findAll() {
@@ -47,6 +51,11 @@ public class PrivilegeServiceImpl implements IPrivilegeService{
 		else {
 			privilegeMapper.insertSelective(privilege);
 		}
+	}
+
+	@Override
+	public List<PrivilegeExtend> findALlWithChildren() {
+		return privilegeExtendMapper.findAllWithChildren();
 	}
 
 	

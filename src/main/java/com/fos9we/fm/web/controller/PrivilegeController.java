@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fos9we.fm.bean.Privilege;
+import com.fos9we.fm.bean.extend.PrivilegeExtend;
 import com.fos9we.fm.service.IPrivilegeService;
 import com.fos9we.fm.utils.Message;
 import com.fos9we.fm.utils.MessageUtil;
@@ -48,5 +49,12 @@ public class PrivilegeController {
 	public Message saveOrUpdate(Privilege privilege) {
 		privilegeService.saveOrUpdate(privilege);
 		return MessageUtil.success("更新成功");
+	}
+	
+	@ApiOperation(value="查询权限时级联查询子权限")
+	@GetMapping("findAllWithChildren")
+	public Message findAllWithChildren() {
+		List<PrivilegeExtend> findALlWithChildren = privilegeService.findALlWithChildren();
+		return MessageUtil.success(findALlWithChildren);
 	}
 }

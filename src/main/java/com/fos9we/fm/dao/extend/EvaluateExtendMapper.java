@@ -13,4 +13,5 @@ import com.fos9we.fm.bean.extend.EvaluateExtend;
 public interface EvaluateExtendMapper {
 	
 	List<EvaluateExtend> findByProductId(long id);
+	
 }
