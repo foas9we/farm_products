@@ -127,7 +127,7 @@ public class UserServiceImpl implements IUserService{
 		else{
 			//传入角色为空
 			//判断之前是否有权限
-			if(list!=null) {
+			if(list.size()>0) {
 				//有权限，将权限删除完、
 				for(UserRole userRole:list) {
 					//旧角色不存在于新角色，将它从数据库中删除
