@@ -38,53 +38,6 @@ import io.swagger.annotations.ApiOperation;
 public class UserController {
    @Autowired
    private IUserService userService;
-   
-//====================================基础用户功能==========================================
-   @ApiOperation(value = "获取用户的基本信息")
-   @GetMapping("findById")
-   public Message findById(long id) {
-		User findUserById = userService.findUserById(id);
-		return MessageUtil.success(findUserById);
-				
-   }
-   
-   @ApiOperation(value = "对用户信息进行更新或者保存")
-   @GetMapping("saveOrUpdate")
-   public Message SaveOrUpdateUser(User user) {
-	   userService.SaveOrUpdateUser(user);
-	   return MessageUtil.success("更新成功");
-   }
-   
-   
-   @ApiOperation(value = "查询所有用户的基本信息")
-   @GetMapping("findAll")
-   public Message findAll() {
-	   List<User> findAll = userService.findAll();
-	   return MessageUtil.success(findAll);
-   }
-   
-   
-   @ApiOperation(value = "查询所有用户的基本信息(含角色信息)")
-   @GetMapping("findAllWithRole")
-   public Message findAllWithRole() {
-	   List<UserExtend> findAllWithRole = userService.findAllWithRole();
-	   return MessageUtil.success(findAllWithRole);
-   }
-   
-   @ApiOperation(value = "通过id删除用户基本信息")
-   @GetMapping("deleteById")
-   public Message deleteById(long id) {
-	   userService.deleteById(id);
-	   return MessageUtil.success("删除成功");
-   }
-   
-   @ApiOperation(value = "配置角色")
-   @GetMapping("setRoles")
-   public Message setRoles(UserRoleVM userRoleVM) {
-	   userService.setRoles(userRoleVM.getId(), userRoleVM.getRoles());
-	   return MessageUtil.success("设置成功");
-   }
-   
 //=================================用户登录验证相关功能========================================
    @ApiOperation(value = "用户登录")
    @PostMapping("login")
