@@ -93,7 +93,7 @@ public interface IUserService {
 	 * @throws
 	 *
 	 */
-	void setRoles(long id,List<Long> roles);
+	void setRoles(long id,List<Long> roles)throws CustomerException;
 	
 	
 }

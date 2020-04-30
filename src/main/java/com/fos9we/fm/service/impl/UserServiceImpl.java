@@ -91,35 +91,59 @@ public class UserServiceImpl implements IUserService{
 
 
 	@Override
-	public void setRoles(long id, List<Long> roles) {
-		//通过id连带找到用户的基本信息和用户的角色信息
+	public void setRoles(long id, List<Long> roles)throws CustomerException {
+		//通过用户id查找桥表中的信息
 		UserRoleExample example = new UserRoleExample();
-		example.createCriteria().andIdEqualTo(id);
+		example.createCriteria().andUserIdEqualTo(id);
 		//获取到id-userId-roleId模型集合
 		List<UserRole> list = userRoleMapper.selectByExample(example);
 		
-		//将之前用户的角色id放到集合oldRoles里面
-		List<Long> oldRoles = new ArrayList<Long>();
-		for(long role:roles) {
-			//新角色不存在于旧角色，就添加到数据库中
-			if(!oldRoles.contains(role)) {
-				UserRole userRole = new UserRole();
-				userRole.setUserId(id);
-				userRole.setRoleId(role);
-				//将userId-RoleId模型插入数据库
-				userRoleMapper.insert(userRole);
+		if(roles!=null) {
+			//传入角色表非空
+			//将之前用户的角色id放到集合oldRoles里面
+			List<Long> oldRoles = new ArrayList<Long>();
+			for(UserRole userRole:list) {
+				oldRoles.add(userRole.getRoleId());
+			}
+			for(long role:roles) {
+				//新角色不存在于旧角色，就添加到数据库中
+				if(!oldRoles.contains(role)) {
+					UserRole userRole = new UserRole();
+					userRole.setUserId(id);
+					userRole.setRoleId(role);
+					//将userId-RoleId模型插入数据库
+					userRoleMapper.insert(userRole);
+				}
+			}
+			
+			
+			for(UserRole userRole:list) {
+				//旧角色不存在于新角色，将它从数据库中删除
+				if(!roles.contains(userRole.getRoleId())) {
+					userRoleMapper.deleteByPrimaryKey(userRole.getId());
+				}
+			}
+		}//判断传入角色是否为空
+		else{
+			//传入角色为空
+			//判断之前是否有权限
+			if(list!=null) {
+				//有权限，将权限删除完、
+				for(UserRole userRole:list) {
+					//旧角色不存在于新角色，将它从数据库中删除
+						userRoleMapper.deleteByPrimaryKey(userRole.getId());
+					}
+			}else {
+				//没有权限
+				throw new CustomerException("您未设置角色");
 			}
 		}
 		
 		
-		for(UserRole userRole:list) {
-			//旧角色不存在于新角色，将它从数据库中删除
-			if(!roles.contains(userRole.getRoleId())) {
-				userRoleMapper.deleteByPrimaryKey(userRole.getId());
-			}
-		}
 		
 		
+		
+			
 		
 		
 	}
