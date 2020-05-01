@@ -10,7 +10,7 @@
   
   <select id="findAllRoleWithPrivilege"   resultMap="RoleExtendResultMap">
     SELECT *
-    FROM fm_role
+    FROM fm_role 
   </select>
   
   <resultMap id="RoleExtendResultMap"
