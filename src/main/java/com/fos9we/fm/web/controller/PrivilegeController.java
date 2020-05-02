@@ -14,6 +14,8 @@ import com.fos9we.fm.bean.extend.PrivilegeExtend;
 import com.fos9we.fm.service.IPrivilegeService;
 import com.fos9we.fm.utils.Message;
 import com.fos9we.fm.utils.MessageUtil;
+import com.fos9we.fm.vm.RolePrivilegeVM;
+import com.fos9we.fm.vm.UserRoleVM;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -50,8 +52,7 @@ public class PrivilegeController {
 		privilegeService.saveOrUpdate(privilege);
 		return MessageUtil.success("更新成功");
 	}
-	
-	@ApiOperation(value="查询权限时级联查询子权限")
+	@ApiOperation(value="级联查到子权限")
 	@GetMapping("findAllWithChildren")
 	public Message findAllWithChildren() {
 		List<PrivilegeExtend> findALlWithChildren = privilegeService.findALlWithChildren();

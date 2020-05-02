@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import com.fos9we.fm.bean.extend.RoleExtend;
 import com.fos9we.fm.service.IRoleService;
 import com.fos9we.fm.utils.Message;
 import com.fos9we.fm.utils.MessageUtil;
+import com.fos9we.fm.vm.RolePrivilegeVM;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -54,4 +56,11 @@ public class RoleController {
 		roleService.deleteRoleById(id);
 		return MessageUtil.success("删除成功");
 	}
+	  
+	   @ApiOperation(value = "给角色配置权限")
+	   @PostMapping("setPrivilegeToRole")
+	   public Message setPrivilegeToRole(RolePrivilegeVM rolePrivilegeVM) {
+		   roleService.setPrivilegeToRole(rolePrivilegeVM.getId(), rolePrivilegeVM.getPrivilege());
+		   return MessageUtil.success("设置成功");
+	   }
 } 

@@ -2,7 +2,7 @@ package com.fos9we.fm.vm;
 
 /**
  *@ClassName: UserVM
- *@Description: TODO
+ *@Description: 拓展类，用于给用户设置角色
  * @author Administrator
  *@date 2020年4月28日 下午5:51:59 
  */

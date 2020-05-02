@@ -48,4 +48,16 @@ public interface IRoleService {
 	 *
 	 */
 	void deleteRoleById(long id)throws CustomerException;
+	
+	/**
+	 * 
+	 * @Title: setPrivilegeToRole 
+	 * @Description: 给角色绑定权限 
+	 * @param @param id
+	 * @param @param ids    
+	 * @return void    
+	 * @throws
+	 *
+	 */
+	void setPrivilegeToRole(long id,List<Long> ids)throws CustomerException;
 }
