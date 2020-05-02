@@ -58,6 +58,14 @@ public class PrivilegeServiceImpl implements IPrivilegeService{
 		return privilegeExtendMapper.findAllWithChildren();
 	}
 
+	@Override
+	public List<Privilege> findParentPrivilege(long id) {
+		PrivilegeExample example = new PrivilegeExample();
+		example.createCriteria().andParentIdIsNull().andIdNotEqualTo(id);
+		List<Privilege> selectByExample = privilegeMapper.selectByExample(example);
+		return selectByExample;
+	}
+
 	
 	
 }

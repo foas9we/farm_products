@@ -56,4 +56,14 @@ public interface IPrivilegeService {
 	 *
 	 */
 	List<PrivilegeExtend> findALlWithChildren();
+	/**
+	 *
+	 * @Title: findParentPrivilege 
+	 * @Description: 查找第一级权限
+	 * @param @return    
+	 * @return List<Privilege>    
+	 * @throws
+	 *
+	 */
+	List<Privilege> findParentPrivilege(long id);
 }
