@@ -38,6 +38,10 @@ public class EvaluateServiceImpl implements IEvaluateService{
 	}
 	@Override
 	public void deleteById(long id) throws CustomerException {
+		Evaluate evaluate = evaluateMapper.selectByPrimaryKey(id);
+		if(evaluate==null) {
+			throw new CustomerException("该评论不存在");
+		}
 		EvaluateExample example = new EvaluateExample();
 		example.createCriteria().andIdEqualTo(id);
 		evaluateMapper.deleteByExample(example);

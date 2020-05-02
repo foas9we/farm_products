@@ -13,4 +13,6 @@ import com.fos9we.fm.bean.extend.OrderExtend;
 public interface OrderExtendMapper {
 	
 	List<OrderExtend> findByUserId(long id);
+	
+	List<OrderExtend> cascadeFindAll();
 }

@@ -7,10 +7,12 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.fos9we.fm.bean.Order;
+import com.fos9we.fm.bean.OrderExample;
 import com.fos9we.fm.bean.extend.OrderExtend;
 import com.fos9we.fm.dao.OrderMapper;
 import com.fos9we.fm.dao.extend.OrderExtendMapper;
 import com.fos9we.fm.service.IOrderService;
+import com.fos9we.fm.utils.CustomerException;
 
 /**
  *@ClassName: OrderServiceImpl
@@ -33,6 +35,23 @@ public class OrderServiceImpl implements IOrderService{
 	@Override
 	public List<OrderExtend> findByUserId(long id) {
 		return orderExtendMapper.findByUserId(id);
+	}
+
+	@Override
+	public List<OrderExtend> cascadeFindAll() {
+		return orderExtendMapper.cascadeFindAll();
+	}
+
+	@Override
+	public void deleteById(long id)throws CustomerException {
+		Order order = orderMapper.selectByPrimaryKey(id);
+		if(order==null) {
+			throw new CustomerException("该订单不存在");
+		}
+		OrderExample example = new OrderExample();
+		example.createCriteria().andIdEqualTo(id);
+		orderMapper.deleteByExample(example);
+		
 	}
 	
 

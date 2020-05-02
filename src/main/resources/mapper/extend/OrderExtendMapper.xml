@@ -8,6 +8,10 @@
     WHERE user_id = #{id}
   </select>
 
+  <select id="cascadeFindAll" resultMap="OrderExtendResultMap">
+    SELECT * 
+    FROM fm_order
+  </select>
   
   <resultMap id="OrderExtendResultMap"
              type="com.fos9we.fm.bean.extend.OrderExtend"

@@ -43,4 +43,18 @@ public class OrderController {
 		List<OrderExtend> findByUserId = orderService.findByUserId(id);
 		return MessageUtil.success(findByUserId);
 	}
+	
+	@ApiOperation(value="通过用户查找订单(级联查询出所有相关的用户、农产品信息)")
+	@GetMapping("cascadeFindAll")
+	public Message cascadeFindAll() {
+		List<OrderExtend> cascadeFindAll = orderService.cascadeFindAll();
+		return MessageUtil.success(cascadeFindAll);
+	}
+	
+	@ApiOperation(value="通过id删除订单")
+	@GetMapping("deleteById")
+	public Message deleteById(long id) {
+		orderService.deleteById(id);
+		return MessageUtil.success("删除成功");
+	}
 }
