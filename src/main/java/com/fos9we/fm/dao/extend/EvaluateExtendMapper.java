@@ -14,4 +14,6 @@ public interface EvaluateExtendMapper {
 	
 	List<EvaluateExtend> findByProductId(long id);
 	
+	List<EvaluateExtend> cascadeFindAll();
+	
 }

@@ -7,6 +7,11 @@
     FROM fm_evaluate
     WHERE product_id = #{id}
   </select>
+  
+  <select id="cascadeFindAll" resultMap="EvaluateExtendResultMap">
+    SELECT * 
+    FROM fm_evaluate
+  </select>
 
   <resultMap id="EvaluateExtendResultMap"
              type="com.fos9we.fm.bean.extend.EvaluateExtend"
