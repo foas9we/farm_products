@@ -3,6 +3,7 @@ package com.fos9we.fm.service;
 import java.util.List;
 
 import com.fos9we.fm.bean.Role;
+import com.fos9we.fm.bean.User;
 import com.fos9we.fm.bean.extend.RoleExtend;
 import com.fos9we.fm.utils.CustomerException;
 
@@ -60,4 +61,25 @@ public interface IRoleService {
 	 *
 	 */
 	void setPrivilegeToRole(long id,List<Long> ids)throws CustomerException;
+	/**
+	 * 
+	 * @Title: saveOrUpadate 
+	 * @Description: 添加或者更新用户
+	 * @param @param user    
+	 * @return void    
+	 * @throws
+	 *
+	 */
+	void saveOrUpadate(Role role)throws CustomerException;
+	/**
+	 * 
+	 * @Title: deleteById 
+	 * @Description: 通过id删除角色信息
+	 * @param @param id
+	 * @param @throws CustomerException    
+	 * @return void    
+	 * @throws
+	 *
+	 */
+	void deleteById(long id)throws CustomerException;
 }

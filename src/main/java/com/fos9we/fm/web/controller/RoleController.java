@@ -57,10 +57,23 @@ public class RoleController {
 		return MessageUtil.success("删除成功");
 	}
 	  
-	   @ApiOperation(value = "给角色配置权限")
-	   @PostMapping("setPrivilegeToRole")
-	   public Message setPrivilegeToRole(RolePrivilegeVM rolePrivilegeVM) {
-		   roleService.setPrivilegeToRole(rolePrivilegeVM.getId(), rolePrivilegeVM.getPrivilege());
-		   return MessageUtil.success("设置成功");
-	   }
+   @ApiOperation(value = "给角色配置权限")
+   @PostMapping("setPrivilegeToRole")
+   public Message setPrivilegeToRole(RolePrivilegeVM rolePrivilegeVM) {
+	   roleService.setPrivilegeToRole(rolePrivilegeVM.getId(), rolePrivilegeVM.getPrivilege());
+	   return MessageUtil.success("设置成功");
+   }
+   @ApiOperation(value = "添加或更新角色")
+   @PostMapping("saveOrUpdate")
+   public Message saveOrUpdate(Role role) {
+	   roleService.saveOrUpadate(role);
+	   return MessageUtil.success("设置成功");
+   }
+   
+    @ApiOperation(value="通过id删除角色")
+	@GetMapping("deleteById")
+	public Message deleteById(long id) {
+    	roleService.deleteById(id);
+    	return MessageUtil.success("删除成功");
+	}
 } 

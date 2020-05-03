@@ -11,6 +11,7 @@ import com.fos9we.fm.bean.Role;
 import com.fos9we.fm.bean.RoleExample;
 import com.fos9we.fm.bean.RolePrivilege;
 import com.fos9we.fm.bean.RolePrivilegeExample;
+import com.fos9we.fm.bean.User;
 import com.fos9we.fm.bean.UserRole;
 import com.fos9we.fm.bean.UserRoleExample;
 import com.fos9we.fm.bean.extend.RoleExtend;
@@ -107,6 +108,27 @@ public class RoleServiceImpl implements IRoleService{
 				throw new CustomerException("您未设置权限");
 			}
 		}
+	}
+
+	@Override
+	public void saveOrUpadate(Role role)throws CustomerException {
+		if(role.getName()==null) {
+			throw new CustomerException("用户名不能为空");
+		}
+		if(role.getId()==null) {
+			roleMapper.insert(role);
+		}else {
+			roleMapper.updateByPrimaryKey(role);
+		}
+	}
+
+	@Override
+	public void deleteById(long id) throws CustomerException {
+		Role role = roleMapper.selectByPrimaryKey(id);
+		if(role==null) {
+			throw new CustomerException("找不到该角色信息");
+		}
+		roleMapper.deleteByPrimaryKey(id);
 	}
 
 }
