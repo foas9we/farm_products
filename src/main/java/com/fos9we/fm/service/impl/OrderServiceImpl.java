@@ -1,5 +1,6 @@
 package com.fos9we.fm.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -29,6 +30,7 @@ public class OrderServiceImpl implements IOrderService{
 	
 	@Override
 	public void createOrder(Order order) {
+		order.setDate(new Date().getTime());//获取当前时间戳
 		orderMapper.insertSelective(order);
 	}
 

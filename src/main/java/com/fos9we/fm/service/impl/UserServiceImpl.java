@@ -1,6 +1,7 @@
 package com.fos9we.fm.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -53,6 +54,7 @@ public class UserServiceImpl implements IUserService{
 		//当没有没传入id对用户信息进行插入
 		//当传入信息有id是对用户信息进行更新
 		if(user.getId()!=null) {
+			user.setRegisterTime(new Date().getTime());//设置注册时间
 			userMapper.updateByPrimaryKeySelective(user);
 		}else {
 			userMapper.insertSelective(user);

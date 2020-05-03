@@ -116,9 +116,9 @@ public class RoleServiceImpl implements IRoleService{
 			throw new CustomerException("用户名不能为空");
 		}
 		if(role.getId()==null) {
-			roleMapper.insert(role);
+			roleMapper.insertSelective(role);
 		}else {
-			roleMapper.updateByPrimaryKey(role);
+			roleMapper.updateByPrimaryKeySelective(role);
 		}
 	}
 

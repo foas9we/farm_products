@@ -49,6 +49,14 @@ public interface IEvaluateService {
 	 *
 	 */
 	List<EvaluateExtend> cascadeFindAll();
-	
-	
+	/**
+	 * 
+	 * @Title: saveOrUpdate 
+	 * @Description: 添加评论 ，评论一经添加，不容修改
+	 * @param @param evaluate    
+	 * @return void    
+	 * @throws
+	 *
+	 */
+	void insert(Evaluate evaluate)throws CustomerException;	
 }
