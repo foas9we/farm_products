@@ -95,5 +95,4 @@ public interface IUserService {
 	 */
 	void setRoles(long id,List<Long> roles)throws CustomerException;
 	
-	
 }
