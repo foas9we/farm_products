@@ -54,4 +54,38 @@ public class MessageUtil {
         return message;
     }
 
+	/**
+	 * @Title: forbidden 
+	 * @Description: 权限不足 
+	 * @param @param string
+	 * @param @return    
+	 * @return Message    
+	 * @throws
+	 * 
+	 */
+	public static Message forbidden(String msg) {
+		Message message = new Message();
+		message.setStatus(403);
+		message.setMessage(msg);
+		message.setTimestamp(new Date().getTime());
+		return message;
+	}
+
+	/**
+	 * @Title: unAuthorized 
+	 * @Description: 未授权 
+	 * @param @param message
+	 * @param @return    
+	 * @return Message    
+	 * @throws
+	 * 
+	 */
+	public static Message unAuthorized(String msg) {
+		Message message = new Message();
+        message.setStatus(401);
+        message.setMessage(msg);
+        message.setTimestamp(new Date().getTime());
+		return message;
+	}
+
 }
