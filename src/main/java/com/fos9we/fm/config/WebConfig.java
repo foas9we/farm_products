@@ -1,7 +1,10 @@
 package com.fos9we.fm.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -12,6 +15,28 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer{
+	/**
+	 * @Title: jwtInterceptor 
+	 * @Description: 将拦截器作为bean写入
+	 * @param @return    
+	 * @return HandlerInterceptor    
+	 * @throws
+	 * 
+	 */
+	@Bean
+	public JwtInterceptor jwtInterceptor() {
+		return new JwtInterceptor();
+	}
+	
+	public void addInterceptors(InterceptorRegistry registry) {
+		//拦截路径可以配置多个，使用逗号分隔开
+		registry.addInterceptor(jwtInterceptor())
+		.addPathPatterns("/**")
+		.excludePathPatterns(
+				"/swagger-resources/**","/v2/**","/swagger-ui.html","/webjars/**",
+				"/vue-element-admin/user/login","/vue-element-admin/user/logout"
+				);
+	}
 	
 	//跨域支持
 	@Override

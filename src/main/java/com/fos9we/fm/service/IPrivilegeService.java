@@ -66,4 +66,6 @@ public interface IPrivilegeService {
 	 *
 	 */
 	List<Privilege> findParentPrivilege(long id);
+	
+
 }

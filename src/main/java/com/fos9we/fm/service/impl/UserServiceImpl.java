@@ -19,6 +19,7 @@ import com.fos9we.fm.dao.UserRoleMapper;
 import com.fos9we.fm.dao.extend.UserExtendMapper;
 import com.fos9we.fm.service.IUserService;
 import com.fos9we.fm.utils.CustomerException;
+import com.fos9we.fm.vm.UserVM;
 
 /**
  *@ClassName: UserServiceImpl
@@ -140,17 +141,25 @@ public class UserServiceImpl implements IUserService{
 				throw new CustomerException("您未设置角色");
 			}
 		}
-		
-		
-		
-		
-		
-			
-		
-		
+	
 	}
-	
-	
+
+
+	@Override
+	public User login(UserVM userVM) throws CustomerException {
+		UserExample example = new UserExample();
+		example.createCriteria().andNameEqualTo(userVM.getName());
+		List<User> list = userMapper.selectByExample(example);
+		if(list.size()<=0) {
+			throw new CustomerException("该用户不存在");
+		}
+		User user = list.get(0);
+		if(!userVM.getPassword().equals(user.getPassword())) {
+			throw new CustomerException("密码错误");
+		}
+		
+		return user;
+	}
 	
 	
 }

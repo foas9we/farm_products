@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fos9we.fm.bean.User;
 import com.fos9we.fm.bean.extend.UserExtend;
 import com.fos9we.fm.service.IUserService;
+import com.fos9we.fm.utils.JwtTokenUtil;
 import com.fos9we.fm.utils.Message;
 import com.fos9we.fm.utils.MessageUtil;
 import com.fos9we.fm.vm.UserRoleVM;
@@ -38,24 +39,27 @@ import io.swagger.annotations.ApiOperation;
 public class UserController {
    @Autowired
    private IUserService userService;
-//=================================用户登录验证相关功能========================================
    @ApiOperation(value = "用户登录")
    @PostMapping("login")
    public Message login(@RequestBody UserVM userVM) {
 	   //认证用户名和密码
+	   User user = userService.login(userVM);
 	   //如果成功，产生token，将token缓存起来，返回
+	   String token = JwtTokenUtil.createJWT(user.getId(), user.getName());
 	   Map<String,String> map = new HashMap<>();
-	   map.put("token", "admin-token");
+	   map.put("token", token);
 	   return MessageUtil.success(map);
 	   
    }
    @ApiOperation(value = "通过token获取用户信息(含角色)")
    @GetMapping("info")
    public Message info(String token) {
-	   //// 1. 通过token获取用户信息  {id,use,gender,roles:[]}
-	   UserExtend findUserExtendById = userService.findUserExtendById(1L);
+	   // 1. 通过token获取用户信息  {id,use,gender,roles:[]}
+	   long id = Long.parseLong(JwtTokenUtil.getUserId(token, JwtTokenUtil.base64Secret));
+	   UserExtend findUserExtendById = userService.findUserExtendById(id);
 	   return MessageUtil.success(findUserExtendById);
    } 
+   
    @ApiOperation(value = "用户退出登录")
    @PostMapping("logout")
    public Message logout() {

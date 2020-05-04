@@ -13,4 +13,7 @@ import com.fos9we.fm.bean.Privilege;
 public interface RolePrivilegeExtendMapper {
 	
 	List<Privilege> findByRoleId(long id);
+	
+	
+	List<Privilege> cascadeFindByRoleId(long id);
 }

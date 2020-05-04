@@ -5,6 +5,7 @@ import java.util.List;
 import com.fos9we.fm.bean.User;
 import com.fos9we.fm.bean.extend.UserExtend;
 import com.fos9we.fm.utils.CustomerException;
+import com.fos9we.fm.vm.UserVM;
 
 /**
  * 
@@ -94,5 +95,15 @@ public interface IUserService {
 	 *
 	 */
 	void setRoles(long id,List<Long> roles)throws CustomerException;
-	
+	/**
+	 * 
+	 * @Title: login 
+	 * @Description: 用户登录
+	 * @param @param userVM
+	 * @param @throws CustomerException    
+	 * @return void    
+	 * @throws
+	 *
+	 */
+	User login(UserVM userVM)throws CustomerException;
 }

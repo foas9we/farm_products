@@ -9,5 +9,11 @@
     
   </select>
 
+  <select id="cascadeFindByRoleId" resultMap="com.fos9we.fm.dao.PrivilegeMapper.BaseResultMap">
+    SELECT p.* 
+    FROM fm_role_privilege rp,fm_privilege p
+    WHERE rp.role_id = #{id} AND (p.id = rp.privilege_id OR p.parent_id = rp.privilege_id)
+    
+  </select>
 
 </mapper>
