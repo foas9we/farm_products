@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fos9we.fm.dao.extend.PrivilegeExtendMapper">
+
+  <select id="findAllWithChildren" resultMap="PrivilegeExtendResultMap">
+    SELECT * 
+    FROM fm_privilege
+    WHERE parent_id is null
+  </select>
+                                         
+  <select id="findByParentId" resultMap="com.fos9we.fm.dao.PrivilegeMapper.BaseResultMap">
+    SELECT * 
+    FROM fm_privilege
+    WHERE parent_id = #{id}
+    
+  </select>
+  <resultMap id="PrivilegeExtendResultMap"
+             type="com.fos9we.fm.bean.extend.PrivilegeExtend"	
+             extends="com.fos9we.fm.dao.PrivilegeMapper.BaseResultMap">
+    <collection 
+		    property="children" 
+		    column="id" 
+		    select="com.fos9we.fm.dao.extend.PrivilegeExtendMapper.findByParentId"></collection>
+    
+  </resultMap>
+
+</mapper>

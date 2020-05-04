@@ -198,4 +198,10 @@ public class Privilege {
     public void setRoute(String route) {
         this.route = route == null ? null : route.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Privilege [id=" + id + ", name=" + name + ", description=" + description + ", type=" + type
+				+ ", parentId=" + parentId + ", route=" + route + "]";
+	}
 }
