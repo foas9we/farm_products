@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fos9we.fm.bean.Category;
+import com.fos9we.fm.bean.extend.CategoryExtend;
 import com.fos9we.fm.service.ICategoryService;
 import com.fos9we.fm.utils.Message;
 import com.fos9we.fm.utils.MessageUtil;
@@ -58,5 +59,12 @@ public class CategoryController {
 	public Message batchDelete(@RequestBody long[] ids) {
 		categoryService.batchDelete(ids);
 		return MessageUtil.success("批量删除成功"); 
+	}
+	
+	@ApiOperation(value="级联查询栏目")
+	@GetMapping("cascodeFindAll")
+	public Message cascodeFindAll() {
+		List<CategoryExtend> cascodeFindAll = categoryService.cascodeFindAll();
+		return MessageUtil.success(cascodeFindAll); 
 	}
 }

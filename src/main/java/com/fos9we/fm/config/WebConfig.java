@@ -34,7 +34,8 @@ public class WebConfig implements WebMvcConfigurer{
 		.addPathPatterns("/**")
 		.excludePathPatterns(
 				"/swagger-resources/**","/v2/**","/swagger-ui.html","/webjars/**",
-				"/vue-element-admin/user/login","/vue-element-admin/user/logout"
+				"/vue-element-admin/user/login","/vue-element-admin/user/logout",
+				"/vue-element-admin/user/info"
 				);
 	}
 	

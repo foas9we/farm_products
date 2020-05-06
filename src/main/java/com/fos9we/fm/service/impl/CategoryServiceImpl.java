@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fos9we.fm.bean.Category;
 import com.fos9we.fm.bean.CategoryExample;
 import com.fos9we.fm.bean.CategoryExample.Criteria;
+import com.fos9we.fm.bean.extend.CategoryExtend;
 import com.fos9we.fm.dao.CategoryMapper;
+import com.fos9we.fm.dao.extend.CategoryExtendMapper;
 import com.fos9we.fm.service.ICategoryService;
 import com.fos9we.fm.utils.CustomerException;
 
@@ -24,6 +26,8 @@ import com.fos9we.fm.utils.CustomerException;
 public class CategoryServiceImpl implements ICategoryService{
 	@Resource
 	private CategoryMapper categoryMapper; 
+	@Resource
+	private CategoryExtendMapper categoryExtendMapper; 
 	@Override
 	public List<Category> findAll() {
 		return categoryMapper.selectByExample(new CategoryExample());
@@ -64,5 +68,24 @@ public class CategoryServiceImpl implements ICategoryService{
 			this.deleteById(id);
 		}
 	}
+
+	/*@Override
+	public List<Category> findByParentId(Long id) throws CustomerException {
+		CategoryExample example = new CategoryExample();
+		if(id==null) {
+			example.createCriteria().andParentIdIsNull();
+		}
+		example.createCriteria().andParentIdEqualTo(id);
+		List<Category> selectByExample = categoryMapper.selectByExample(example);
+		return selectByExample;
+	}*/
+
+	@Override
+	public List<CategoryExtend> cascodeFindAll() {
+		List<CategoryExtend> cascodeFindAll = categoryExtendMapper.cascodeFindAll();
+		return cascodeFindAll;
+	}
+
+	
 	
 }

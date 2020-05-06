@@ -75,14 +75,12 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 		//    	List<Privilege> privileges = privilegeService.findByParentId(userId);
 		for(Privilege p : privileges){
 			//将用户拥有的权限和请求的路径匹配
-			System.out.println(p.getRoute());
-			System.out.println(path);
-		    if(p.getRoute().matches(path)) {
-		    	System.out.println(true);
+			
+		    if(p.getRoute().matches(path)) {	
 		    	return true;
 		    }
 		}
+		System.out.println(path);
 		throw new PermissionException("权限不足");
-//    	return true;
     }
 }

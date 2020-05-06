@@ -3,6 +3,7 @@ package com.fos9we.fm.service;
 import java.util.List;
 
 import com.fos9we.fm.bean.Category;
+import com.fos9we.fm.bean.extend.CategoryExtend;
 import com.fos9we.fm.utils.CustomerException;
 
 /**
@@ -16,4 +17,27 @@ public interface ICategoryService {
 	void saveOrUpdate(Category category)throws CustomerException;
 	void deleteById(long id)throws CustomerException;
 	void batchDelete(long[] ids)throws CustomerException;
+	/**
+	 * 
+	 * @Title: findByParentId 
+	 * @Description: 通过父类id查找栏目 
+	 * @param @param id
+	 * @param @return    
+	 * @return List<Category>    
+	 * @throws
+	 *
+	 */
+	/*List<Category> findByParentId(Long id)throws CustomerException;*/
+	/**
+	 * 
+	 * @Title: cascodeFindAll 
+	 * @Description: 级联查找所有栏目 
+	 * @param @return    
+	 * @return List<CategoryExtend>    
+	 * @throws
+	 *
+	 */
+	List<CategoryExtend> cascodeFindAll();
+	
+	
 }
