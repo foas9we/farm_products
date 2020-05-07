@@ -76,5 +76,13 @@ public class ProductController {
 		return MessageUtil.success("删除成功");
 		 		
 	}
+	
+	@ApiOperation(value="通过产品名字模糊查询")
+	@GetMapping("findByName")
+	public Message findByName(String name) {
+		List<ProductExtend> findByName = productService.findByName(name);
+		return MessageUtil.success(findByName);
+		 		
+	}
 
 }

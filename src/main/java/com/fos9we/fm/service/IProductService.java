@@ -43,4 +43,15 @@ public interface IProductService {
 	 * 通过农产品编号删除
 	 */
 	void deleteById(long id)throws CustomerException;
+	/**
+	 * 
+	 * @Title: findByName 
+	 * @Description: 通过名字模糊查询
+	 * @param @param name
+	 * @param @return    
+	 * @return List<ProductExtend>    
+	 * @throws
+	 *
+	 */
+	List<ProductExtend> findByName(String name);
 }

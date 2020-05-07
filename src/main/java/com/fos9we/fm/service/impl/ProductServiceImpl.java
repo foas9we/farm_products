@@ -66,6 +66,12 @@ public class ProductServiceImpl implements IProductService{
 		productMapper.deleteByPrimaryKey(id);
 	}
 
+	@Override
+	public List<ProductExtend> findByName(String name) {
+		List<ProductExtend> findByName = productExtendMapper.findByName(name);
+		return findByName;
+	}
+
 	
 
 }

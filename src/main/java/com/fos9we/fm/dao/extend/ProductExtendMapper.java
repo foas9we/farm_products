@@ -45,4 +45,15 @@ public interface ProductExtendMapper {
      *
      */
     ProductExtend  findById(long id);
+    /**
+     * 
+     * @Title: findByName 
+     * @Description: 根据农产品的名字搜索
+     * @param @param name
+     * @param @return    
+     * @return List<ProductExtend>    
+     * @throws
+     *
+     */
+    List<ProductExtend> findByName(String name);
 }
