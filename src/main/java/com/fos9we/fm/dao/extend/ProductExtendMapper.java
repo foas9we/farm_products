@@ -56,4 +56,25 @@ public interface ProductExtendMapper {
      *
      */
     List<ProductExtend> findByName(String name);
+    /**
+     * 
+     * @Title: findAllSupply 
+     * @Description: 级联查询所有求购信息
+     * @param @return    
+     * @return List<ProductExtend>    
+     * @throws
+     *
+     */
+    List<ProductExtend> findAllSupply();
+    /**
+     * 
+     * @Title: findByNameDemand 
+     * @Description: 通过名字模糊查询求购信息 
+     * @param @param name
+     * @param @return    
+     * @return List<ProductExtend>    
+     * @throws
+     *
+     */
+    List<ProductExtend> findByNameDemand(String name);
 }

@@ -72,6 +72,18 @@ public class ProductServiceImpl implements IProductService{
 		return findByName;
 	}
 
+	@Override
+	public List<ProductExtend> findAllSupply() {
+		List<ProductExtend> findAllSupply = productExtendMapper.findAllSupply();
+		return findAllSupply;
+	}
+
+	@Override
+	public List<ProductExtend> findByNameDemand(String name) {
+		List<ProductExtend> findByNameDemand = productExtendMapper.findByNameDemand(name);
+		return findByNameDemand;
+	}
+
 	
 
 }

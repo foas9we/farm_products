@@ -84,5 +84,19 @@ public class ProductController {
 		return MessageUtil.success(findByName);
 		 		
 	}
+	
+	@ApiOperation(value="级联查询所有采购信息")
+	@GetMapping("findAllSupply")
+	public Message findAllSupply() {
+		List<ProductExtend> findAllSupply = productService.findAllSupply();
+		return MessageUtil.success(findAllSupply);
+	}
+	
+	@ApiOperation(value="按照名字级联模糊查询采购信息")
+	@GetMapping("findByNameDemand")
+	public Message findByNameDemand(String name) {
+		List<ProductExtend> findByNameDemand = productService.findByNameDemand(name);
+		return MessageUtil.success(findByNameDemand);
+	}
 
 }
