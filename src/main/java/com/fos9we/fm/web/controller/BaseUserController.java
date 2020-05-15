@@ -31,7 +31,6 @@ public class BaseUserController {
    @Autowired
    private IUserService userService;
    
-//====================================基础用户功能==========================================
    @ApiOperation(value = "获取用户的基本信息")
    @GetMapping("findById")
    public Message findById(long id) {
@@ -75,5 +74,12 @@ public class BaseUserController {
    public Message setRoles(UserRoleVM userRoleVM) {
 	   userService.setRoles(userRoleVM.getId(), userRoleVM.getRoles());
 	   return MessageUtil.success("设置成功");
+   }
+   
+   @ApiOperation(value = "通过用户名那么查找用户基本信息")
+   @GetMapping("findByName")
+   public Message findByName(String name){
+	   User findByName = userService.findByName(name);
+	   return MessageUtil.success(findByName);
    }
 }

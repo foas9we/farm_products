@@ -66,6 +66,14 @@ public class PrivilegeServiceImpl implements IPrivilegeService{
 		return selectByExample;
 	}
 
+	@Override
+	public List<Privilege> findAllFist() {
+		PrivilegeExample example = new PrivilegeExample();
+		example.createCriteria().andParentIdIsNull();
+		List<Privilege> selectByExample = privilegeMapper.selectByExample(example);
+		return selectByExample;
+	}
+
 	
 
 	

@@ -58,11 +58,18 @@ public class PrivilegeController {
 		List<PrivilegeExtend> findALlWithChildren = privilegeService.findALlWithChildren();
 		return MessageUtil.success(findALlWithChildren);
 	}
-	@ApiOperation(value="查找一级权限")
+	@ApiOperation(value="查找一级权限(除己方父类权限)")
 	@GetMapping("findParentPrivilege")
 	public Message findParentPrivilege(long id){
 		List<Privilege> findParentPrivilege = privilegeService.findParentPrivilege(id);
 		return MessageUtil.success(findParentPrivilege);
+		
+	}
+	@ApiOperation(value="查找所有一级权限")
+	@GetMapping("findAllFirst")
+	public Message findAllFirst(){
+		List<Privilege> findAllFist = privilegeService.findAllFist();
+		return MessageUtil.success(findAllFist);
 		
 	}
 }

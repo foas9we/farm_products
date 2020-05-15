@@ -59,13 +59,21 @@ public interface IPrivilegeService {
 	/**
 	 *
 	 * @Title: findParentPrivilege 
-	 * @Description: 查找第一级权限
+	 * @Description: 查找所有第一级权限，除了自己的当前父类
 	 * @param @return    
 	 * @return List<Privilege>    
 	 * @throws
 	 *
 	 */
 	List<Privilege> findParentPrivilege(long id);
-	
-
+	/**
+	 * 
+	 * @Title: findAllFist 
+	 * @Description: 查询所有的一级权限
+	 * @param @return    
+	 * @return List<Privilege>    
+	 * @throws
+	 *
+	 */
+	List<Privilege> findAllFist();
 }

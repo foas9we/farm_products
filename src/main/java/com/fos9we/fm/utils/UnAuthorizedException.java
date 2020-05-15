@@ -12,7 +12,7 @@ import com.fos9we.fm.utils.CustomerException;
 public class UnAuthorizedException extends CustomerException {
     public UnAuthorizedException() {
     }
-
+ 
     public UnAuthorizedException(String message) {
         super(message);
     }

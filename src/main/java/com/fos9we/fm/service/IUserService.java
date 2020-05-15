@@ -106,4 +106,15 @@ public interface IUserService {
 	 *
 	 */
 	User login(UserVM userVM)throws CustomerException;
+	/**
+	 * 
+	 * @Title: findByName 
+	 * @Description:通过用户名查找用户信息
+	 * @param @param Name
+	 * @param @return    
+	 * @return User    
+	 * @throws
+	 *
+	 */
+	User findByName(String name);
 }

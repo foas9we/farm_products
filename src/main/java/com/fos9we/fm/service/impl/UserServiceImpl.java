@@ -160,6 +160,15 @@ public class UserServiceImpl implements IUserService{
 		
 		return user;
 	}
+
+
+	@Override
+	public User findByName(String name) {
+		UserExample example = new UserExample();
+		example.createCriteria().andNameEqualTo(name);
+		List<User> user = userMapper.selectByExample(example);
+		return user.get(0);
+	}
 	
 	
 }

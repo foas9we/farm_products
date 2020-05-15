@@ -80,7 +80,7 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 		    	return true;
 		    }
 		}
-		System.out.println(path);
+		
 		throw new PermissionException("权限不足");
     }
 }

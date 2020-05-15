@@ -31,12 +31,12 @@ public class EvaluateController {
 	private IEvaluateService evaluateService;
 	
 	@ApiOperation(value="通过农产品id查找评论")
-	@GetMapping("findByCategory")
+	@GetMapping("findByProductId")
 	public Message findByProductId(long id){
 		List<EvaluateExtend> findByProductId = evaluateService.findByProductId(id); 
 		return MessageUtil.success(findByProductId);
 	}
-	
+	  
 	@ApiOperation(value="查找所有评论")
 	@GetMapping("findAll")
 	public Message findAll(){
