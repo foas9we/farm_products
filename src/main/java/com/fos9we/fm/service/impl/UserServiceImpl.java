@@ -59,6 +59,14 @@ public class UserServiceImpl implements IUserService{
 			userMapper.updateByPrimaryKeySelective(user);
 		}else {
 			userMapper.insertSelective(user);
+			UserRole userRole = new UserRole();
+			System.out.println("当前注册用户id是："+user.getId());
+			userRole.setUserId(user.getId());
+			userRole.setRoleId(4L);
+			//将userId-RoleId模型插入数据库
+			userRoleMapper.insert(userRole);
+			
+			
 		}
 	}
 
