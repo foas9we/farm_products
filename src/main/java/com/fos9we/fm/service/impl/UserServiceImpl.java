@@ -55,12 +55,13 @@ public class UserServiceImpl implements IUserService{
 		//当没有没传入id对用户信息进行插入
 		//当传入信息有id是对用户信息进行更新
 		if(user.getId()!=null) {
-			user.setRegisterTime(new Date().getTime());//设置注册时间
+			
 			userMapper.updateByPrimaryKeySelective(user);
 		}else {
+			user.setRegisterTime(new Date().getTime());//设置注册时间
 			userMapper.insertSelective(user);
 			UserRole userRole = new UserRole();
-			System.out.println("当前注册用户id是："+user.getId());
+//			System.out.println("当前注册用户id是："+user.getId());
 			userRole.setUserId(user.getId());
 			userRole.setRoleId(4L);
 			//将userId-RoleId模型插入数据库

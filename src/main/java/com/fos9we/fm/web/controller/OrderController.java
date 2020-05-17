@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,7 @@ public class OrderController {
 	private IOrderService orderService;
 	
 	@ApiOperation(value="创建新的订单")
-	@GetMapping("createOrder")
+	@PostMapping("createOrder")
 	public Message createOrder(Order order) {
 		orderService.createOrder(order);
 		return MessageUtil.success("创建成功");
