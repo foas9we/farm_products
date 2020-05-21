@@ -13,6 +13,7 @@
     FROM fm_order
   </select>
   
+  
   <resultMap id="OrderExtendResultMap"
              type="com.fos9we.fm.bean.extend.OrderExtend"
              extends="com.fos9we.fm.dao.OrderMapper.BaseResultMap">

@@ -57,4 +57,15 @@ public interface IOrderService {
 	 *
 	 */
 	void deleteById(long id)throws CustomerException;
+	/**
+	 * 
+	 * @Title: findByUserName 
+	 * @Description: 通过用户名查找订单
+	 * @param @param name
+	 * @param @return    
+	 * @return List<OrderExtend>    
+	 * @throws
+	 *
+	 */
+	List<OrderExtend> findByUserName(String name);
 }

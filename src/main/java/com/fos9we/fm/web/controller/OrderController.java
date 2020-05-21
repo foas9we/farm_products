@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fos9we.fm.bean.Evaluate;
 import com.fos9we.fm.bean.Order;
+import com.fos9we.fm.bean.User;
 import com.fos9we.fm.bean.extend.OrderExtend;
+import com.fos9we.fm.service.IEvaluateService;
 import com.fos9we.fm.service.IOrderService;
 import com.fos9we.fm.service.impl.OrderServiceImpl;
 import com.fos9we.fm.utils.Message;
@@ -30,6 +33,8 @@ import io.swagger.annotations.ApiOperation;
 public class OrderController {
 	@Autowired
 	private IOrderService orderService;
+	@Autowired
+	private IEvaluateService evaluateService;
 	
 	@ApiOperation(value="创建新的订单")
 	@PostMapping("createOrder")
@@ -58,4 +63,18 @@ public class OrderController {
 		orderService.deleteById(id);
 		return MessageUtil.success("删除成功");
 	}
+	
+	@ApiOperation(value="通过用户名查找订单")
+	@GetMapping("findByUserName")
+	public Message findByUserName(String name) {
+		List<OrderExtend> findByUserName = orderService.findByUserName(name);
+		return MessageUtil.success(findByUserName);
+	} 
+	
+   @ApiOperation(value = "评价订单")
+   @PostMapping("toEvaluate")
+   public Message toEvaluate(Evaluate evaluate) {
+	   evaluateService.insert(evaluate);
+	   return MessageUtil.success("评论成功");
+   }
 }

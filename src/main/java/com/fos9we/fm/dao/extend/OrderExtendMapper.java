@@ -15,4 +15,5 @@ public interface OrderExtendMapper {
 	List<OrderExtend> findByUserId(long id);
 	
 	List<OrderExtend> cascadeFindAll();
+	
 }

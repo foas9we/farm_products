@@ -9,8 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.fos9we.fm.bean.Order;
 import com.fos9we.fm.bean.OrderExample;
+import com.fos9we.fm.bean.User;
+import com.fos9we.fm.bean.UserExample;
 import com.fos9we.fm.bean.extend.OrderExtend;
 import com.fos9we.fm.dao.OrderMapper;
+import com.fos9we.fm.dao.UserMapper;
 import com.fos9we.fm.dao.extend.OrderExtendMapper;
 import com.fos9we.fm.service.IOrderService;
 import com.fos9we.fm.utils.CustomerException;
@@ -25,6 +28,8 @@ import com.fos9we.fm.utils.CustomerException;
 public class OrderServiceImpl implements IOrderService{
 	@Resource
 	private OrderMapper orderMapper;
+	@Resource
+	private UserMapper userMapper;
 	@Resource
 	private OrderExtendMapper orderExtendMapper;
 	
@@ -54,6 +59,16 @@ public class OrderServiceImpl implements IOrderService{
 		example.createCriteria().andIdEqualTo(id);
 		orderMapper.deleteByExample(example);
 		
+	}
+
+	@Override
+	public List<OrderExtend> findByUserName(String name) {
+		UserExample example = new UserExample();
+		example.createCriteria().andNameEqualTo(name);
+		List<User> userList = userMapper.selectByExample(example);
+		User user = userList.get(0);
+		List<OrderExtend> findByUserId = orderExtendMapper.findByUserId(user.getId());
+		return findByUserId;
 	}
 	
 
