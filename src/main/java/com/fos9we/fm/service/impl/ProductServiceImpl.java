@@ -84,6 +84,12 @@ public class ProductServiceImpl implements IProductService{
 		return findByNameDemand;
 	}
 
+	@Override
+	public List<ProductExtend> findDemandByCategory(long id) {
+		List<ProductExtend> findDemandByCategory = productExtendMapper.findDemandByCategory(id);
+		return findDemandByCategory;
+	}
+
 	
 
 }

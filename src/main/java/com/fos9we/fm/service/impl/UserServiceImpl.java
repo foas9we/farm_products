@@ -45,19 +45,25 @@ public class UserServiceImpl implements IUserService{
 	
 	@Override
 	public void SaveOrUpdateUser(User user) {
-		//控制用户名唯一
-		UserExample example = new UserExample();
-		example.createCriteria().andNameEqualTo(user.getName());
-		List<User> list = userMapper.selectByExample(example);
-		if(list.size()>0) {
-			throw new CustomerException("用户名已存在");
-		}
+		
 		//当没有没传入id对用户信息进行插入
 		//当传入信息有id是对用户信息进行更新
+		
 		if(user.getId()!=null) {
+			try {
+				userMapper.updateByPrimaryKeySelective(user);
+			}catch(Exception exception){
+				throw new CustomerException("用户名已存在");
+			}
 			
-			userMapper.updateByPrimaryKeySelective(user);
 		}else {
+			//控制用户名唯一
+			UserExample example = new UserExample();
+			example.createCriteria().andNameEqualTo(user.getName());
+			List<User> list = userMapper.selectByExample(example);
+			if(list.size()>0) {
+				throw new CustomerException("用户名已存在");
+			}
 			user.setRegisterTime(new Date().getTime());//设置注册时间
 			userMapper.insertSelective(user);
 			UserRole userRole = new UserRole();

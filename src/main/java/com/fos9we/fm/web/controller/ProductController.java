@@ -98,5 +98,11 @@ public class ProductController {
 		List<ProductExtend> findByNameDemand = productService.findByNameDemand(name);
 		return MessageUtil.success(findByNameDemand);
 	}
-
+	
+	@ApiOperation(value="通过栏目查找采购信息")
+	@GetMapping("findDemandByCategory")
+	public Message findDemandByCategory(long id) {
+		List<ProductExtend> findDemandByCategory = productService.findDemandByCategory(id);
+		return MessageUtil.success(findDemandByCategory);
+	}
 }

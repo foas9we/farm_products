@@ -75,4 +75,15 @@ public interface IProductService {
 	 *
 	 */
 	List<ProductExtend> findByNameDemand(String name);
+	/**
+	 * 
+	 * @Title: findDemandByCategory 
+	 * @Description: 通过栏目查找供应信息 
+	 * @param @param id
+	 * @param @return    
+	 * @return List<ProductExtend>    
+	 * @throws
+	 *
+	 */
+	List<ProductExtend> findDemandByCategory(long id);
 }

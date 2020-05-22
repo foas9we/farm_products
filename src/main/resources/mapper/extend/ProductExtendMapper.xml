@@ -34,6 +34,11 @@
     FROM fm_product
     WHERE title LIKE CONCAT(CONCAT('%', #{name}), '%') AND state='采购'
   </select>
+  <select id="findDemandByCategory" parameterType="long" resultMap="ProductExtendResultMap">
+    SELECT * 
+    FROM fm_product
+    WHERE category_id = #{id} AND state='采购'
+  </select>
   <resultMap id="ProductExtendResultMap"
              type="com.fos9we.fm.bean.extend.ProductExtend"
              extends="com.fos9we.fm.dao.ProductMapper.BaseResultMap">
