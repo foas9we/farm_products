@@ -11,6 +11,7 @@ import com.fos9we.fm.bean.Evaluate;
 import com.fos9we.fm.bean.EvaluateExample;
 import com.fos9we.fm.bean.Product;
 import com.fos9we.fm.bean.User;
+import com.fos9we.fm.bean.UserExample;
 import com.fos9we.fm.bean.extend.EvaluateExtend;
 import com.fos9we.fm.dao.EvaluateMapper;
 import com.fos9we.fm.dao.ProductMapper;
@@ -74,6 +75,18 @@ public class EvaluateServiceImpl implements IEvaluateService{
 		}
 		evaluate.setDate(new Date().getTime());//设置评论时间
 		evaluateMapper.insertSelective(evaluate);
+	}
+	@Override
+	public List<EvaluateExtend> cascadeFindByUserName(String name)throws CustomerException{
+		UserExample example = new UserExample();
+		example.createCriteria().andNameEqualTo(name);
+		List<User> selectByExample = userMapper.selectByExample(example);
+		if(selectByExample.size()<=0) {
+			 throw new CustomerException("不存在该用户");
+		}
+		long userId = selectByExample.get(0).getId();
+		List<EvaluateExtend> cascadeFindByUserId = evaluateExtendMapper.cascadeFindByUserId(userId);
+		return cascadeFindByUserId;
 	}
 
 }

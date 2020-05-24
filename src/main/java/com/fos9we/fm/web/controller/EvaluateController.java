@@ -57,4 +57,11 @@ public class EvaluateController {
 		List<EvaluateExtend> cascadeFindAll = evaluateService.cascadeFindAll();
 		return MessageUtil.success(cascadeFindAll);
 	}
+	
+	@ApiOperation(value="通过用户名查找评论")
+	@GetMapping("cascadeFindByUserName")
+	public Message cascadeFindByUserName(String name){
+		List<EvaluateExtend> cascadeFindByUserName = evaluateService.cascadeFindByUserName(name);
+		return MessageUtil.success(cascadeFindByUserName);
+	}
 }

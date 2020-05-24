@@ -86,4 +86,15 @@ public interface IProductService {
 	 *
 	 */
 	List<ProductExtend> findDemandByCategory(long id);
+	/**
+	 * 
+	 * @Title: searchForDim 
+	 * @Description: 对编号和标题进行模糊查询
+	 * @param @param product
+	 * @param @return    
+	 * @return List<ProductExtend>    
+	 * @throws
+	 *
+	 */
+//	List<ProductExtend> searchForDim(Product product);
 }

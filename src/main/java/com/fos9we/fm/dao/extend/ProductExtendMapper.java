@@ -2,6 +2,7 @@ package com.fos9we.fm.dao.extend;
 
 import java.util.List;
 
+import com.fos9we.fm.bean.Product;
 import com.fos9we.fm.bean.extend.ProductExtend;
 
 /**
@@ -88,4 +89,15 @@ public interface ProductExtendMapper {
      *
      */
     List<ProductExtend> findDemandByCategory(long id);
+    /**
+     * 
+     * @Title: searchForDim 
+     * @Description: 一个搜索框对多个字段模糊查询
+     * @param @param product
+     * @param @return    
+     * @return List<ProductExtend>    
+     * @throws
+     *
+     */
+//    List<ProductExtend> searchForDim(Product product);
 }

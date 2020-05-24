@@ -1,5 +1,6 @@
 package com.fos9we.fm.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -89,6 +90,20 @@ public class ProductServiceImpl implements IProductService{
 		List<ProductExtend> findDemandByCategory = productExtendMapper.findDemandByCategory(id);
 		return findDemandByCategory;
 	}
+
+//	@Override
+//	public List<ProductExtend> searchForDim(Long id) {
+////		List<ProductExtend> findByName = productExtendMapper.findByName(product.getTitle());
+////		if(findByName.size()<=0) {
+////			ProductExtend findById = productExtendMapper.findById(product.getId());
+////			List<ProductExtend> list = new ArrayList<ProductExtend>();
+////			list.add(findById);
+////			return list;
+////		}else {
+////			return findByName;
+////		}
+//		
+//	}
 
 	
 

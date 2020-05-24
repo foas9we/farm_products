@@ -59,4 +59,16 @@ public interface IEvaluateService {
 	 *
 	 */
 	void insert(Evaluate evaluate)throws CustomerException;	
+	/**
+	 * 
+	 * @Title: cascadeFindByUserName 
+	 * @Description: 通过用户名级联查找评论
+	 * @param @param name
+	 * @param @return    
+	 * @return List<EvaluateExtend>    
+	 * @throws
+	 *
+	 */
+	List<EvaluateExtend> cascadeFindByUserName(String name)throws CustomerException;
+	
 }

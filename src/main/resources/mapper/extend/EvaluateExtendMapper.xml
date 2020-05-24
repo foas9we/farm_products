@@ -12,7 +12,11 @@
     SELECT * 
     FROM fm_evaluate
   </select>
-
+<select id="cascadeFindByUserId" resultMap="EvaluateExtendResultMap">
+    SELECT * 
+    FROM fm_evaluate
+    WHERE user_id = #{id}
+  </select>
   <resultMap id="EvaluateExtendResultMap"
              type="com.fos9we.fm.bean.extend.EvaluateExtend"
              extends="com.fos9we.fm.dao.EvaluateMapper.BaseResultMap">

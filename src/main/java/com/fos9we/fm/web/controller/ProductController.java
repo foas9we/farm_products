@@ -54,6 +54,14 @@ public class ProductController {
 		
 	}
 	
+//	@ApiOperation(value="对编号和标题模糊查询")
+//	@GetMapping("searchForDim")
+//	public Message searchForDim(Product product){
+//		List<ProductExtend> searchForDim = productService.searchForDim(product);
+//		return MessageUtil.success(searchForDim);
+//		
+//	}
+	
 	@ApiOperation(value="发布或者更新农产品信息")
 	@PostMapping("saveOrUpdateProduct")
 	public Message saveOrUpdateProduct(Product product){
